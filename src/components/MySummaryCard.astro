@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import ava from "@/assets/ava.png";
+import {
+    Baby,
+    GraduationCap,
+    Languages,
+    MapPinned,
+    UsersRound,
+} from "@lucide/astro";
+import SummaryPoint from "@/components/generic/SummaryPoint.astro";
+
+const title = "Simon Lumikello";
+---
+
+<div class="card bg-base-200 w-96 shadow-md">
+    <div class="card-body items-center text-center">
+        <h1 class="card-title text-2xl font-light">{title}</h1>
+        <figure class="avatar my-4 hover-3d">
+            <div class="mask mask-hexagon-2 w-48">
+                <Image src={ava} alt={title} fetchpriority="high" priority />
+            </div>
+        </figure>
+        <div class="flex flex-row gap-4 items-center">
+            <SummaryPoint text="1987"><Baby slot="icon" /></SummaryPoint>
+            <SummaryPoint text="Jyväskylä">
+                <MapPinned slot="icon" />
+            </SummaryPoint>
+        </div>
+        <SummaryPoint text="PetrSU, Information Systems and Technologies">
+            <GraduationCap slot="icon" />
+        </SummaryPoint>
+
+        <SummaryPoint text="English, Russian, Finnish">
+            <Languages slot="icon" />
+        </SummaryPoint>
+
+        <SummaryPoint text="Married, father of two">
+            <UsersRound slot="icon" />
+        </SummaryPoint>
+    </div>
+</div>

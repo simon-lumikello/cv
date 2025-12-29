@@ -1,0 +1,22 @@
+---
+interface Props {
+    text: string;
+}
+const { text } = Astro.props;
+---
+
+<div class="flex flex-row gap-2 items-center">
+    <div class="icon-wrapper">
+        <slot name="icon" />
+    </div>
+    <div>{text}</div>
+</div>
+
+<style>
+    // Use :global() to target the content inside the slot
+    // This overrides the SVG's default attributes
+    .icon-wrapper :global(svg) {
+        width: 18px;
+        height: 18px;
+    }
+</style>
