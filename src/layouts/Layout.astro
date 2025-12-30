@@ -1,5 +1,8 @@
 ---
 import Analytics from "@vercel/analytics/astro";
+import { MY_DETAILS } from "@/assets/MyDetails";
+
+const { name } = MY_DETAILS;
 ---
 
 <!doctype html>
@@ -9,7 +12,7 @@ import Analytics from "@vercel/analytics/astro";
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>CV: Simon Lumikello</title>
+        <title>CV: {name}</title>
         <Analytics />
     </head>
     <body>

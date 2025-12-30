@@ -1,9 +1,6 @@
----
-import Timeline from "@/components/generic/Timeline.astro";
-import TimelineItem from "@/components/generic/TimelineItem.astro";
-import type { TimelineEntry } from "@/types/TimelineEntry";
+import type { TimelineEntry } from "@/types/TimelineEntry"
 
-const entries: TimelineEntry[] = [
+export const MY_TIMELINE_ENTRIES: TimelineEntry[] = [
     {
         yearStart: 2024,
         ongoing: true,
@@ -156,9 +153,4 @@ Worked as freelance Web Developer & Graphic Designer. Projects ranged from simpl
         `,
         technologies: ["HTML", "CSS", "PHP", "JavaScript", "MySQL"],
     },
-];
----
-
-<Timeline>
-    {entries.map((entry) => <TimelineItem {...entry} />)}
-</Timeline>
+]

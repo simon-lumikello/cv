@@ -6,12 +6,17 @@ import {
     GraduationCap,
     Languages,
     MapPinned,
-    UsersRound,
 } from "@lucide/astro";
 import ava from "@/assets/ava.png";
-import SummaryPoint from "@/components/generic/SummaryPoint.astro";
+import SummaryPoint from "@/components/SummaryPoint.astro";
+import type { PersonDetails } from "@/types/PersonDetails";
 
-const title = "Simon Lumikello";
+interface Props {
+    details: PersonDetails;
+}
+
+const { details } = Astro.props;
+const { name, location, year, school, languages } = details;
 ---
 
 <div class="card bg-base-200 w-96 shadow-md relative">
@@ -22,28 +27,24 @@ const title = "Simon Lumikello";
     </div>
 
     <div class="card-body items-center text-center">
-        <h1 class="card-title text-2xl font-light">{title}</h1>
+        <h1 class="card-title text-2xl font-light">{name}</h1>
         <figure class="avatar my-4 hover-3d">
             <div class="mask mask-hexagon-2 w-48">
-                <Image src={ava} alt={title} fetchpriority="high" priority />
+                <Image src={ava} alt={name} fetchpriority="high" priority />
             </div>
         </figure>
         <div class="flex flex-row gap-4 items-center">
-            <SummaryPoint text="1987"><Baby slot="icon" /></SummaryPoint>
-            <SummaryPoint text="Jyväskylä">
+            <SummaryPoint text={`${year}`}><Baby slot="icon" /></SummaryPoint>
+            <SummaryPoint text={location}>
                 <MapPinned slot="icon" />
             </SummaryPoint>
         </div>
-        <SummaryPoint text="PetrSU, Information Systems and Technologies">
+        <SummaryPoint text={school}>
             <GraduationCap slot="icon" />
         </SummaryPoint>
 
-        <SummaryPoint text="English, Russian, Finnish">
+        <SummaryPoint text={languages.join(", ")}>
             <Languages slot="icon" />
-        </SummaryPoint>
-
-        <SummaryPoint text="Married, father of two">
-            <UsersRound slot="icon" />
         </SummaryPoint>
     </div>
 </div>
