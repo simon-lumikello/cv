@@ -5,15 +5,15 @@ import type { TimelineEntry } from "@/types/TimelineEntry";
 interface Props extends TimelineEntry {}
 
 const {
-	title,
-	description,
-	yearStart,
-	yearEnd,
-	ongoing,
-	location,
-	company,
-	technologies,
-	pageBreak,
+    title,
+    description,
+    yearStart,
+    yearEnd,
+    ongoing,
+    location,
+    company,
+    technologies,
+    pageBreak,
 } = Astro.props;
 
 const yearEndValue = ongoing ? new Date().getFullYear() : yearEnd;

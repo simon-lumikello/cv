@@ -10,26 +10,26 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
-	<div class="flex flex-col items-center gap-10 pt-8">
-		<MySummaryCard />
+    <div class="flex flex-col items-center gap-10 pt-8">
+        <MySummaryCard />
 
-		<MyBio />
-		<div class="page-break"></div>
+        <MyBio />
+        <div class="page-break"></div>
 
-		<h2 class="text-2xl font-light">Tech stack</h2>
-		<MyTechLinks />
-		<div class="page-break"></div>
+        <h2 class="text-2xl font-light">Tech stack</h2>
+        <MyTechLinks />
+        <div class="page-break"></div>
 
-		<h2 class="text-2xl font-light">Timeline</h2>
-		<MyTimeline />
+        <h2 class="text-2xl font-light">Timeline</h2>
+        <MyTimeline />
 
-		<a
-			href="https://github.com/simon-lumikello/cv"
-			class="text-subtle mb-4 print:hidden"
-		>
-			<SummaryPoint text="This page on GitHub">
-				<Link2 slot="icon" />
-			</SummaryPoint>
-		</a>
-	</div>
+        <a
+            href="https://github.com/simon-lumikello/cv"
+            class="text-subtle mb-4 print:hidden"
+        >
+            <SummaryPoint text="This page on GitHub">
+                <Link2 slot="icon" />
+            </SummaryPoint>
+        </a>
+    </div>
 </Layout>
