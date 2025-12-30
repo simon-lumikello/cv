@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import {
     Baby,
     Download,
@@ -7,9 +6,10 @@ import {
     Languages,
     MapPinned,
 } from "@lucide/astro";
+import { Image } from "astro:assets";
 import ava from "@/assets/ava.png";
-import SummaryPoint from "@/components/SummaryPoint.astro";
 import type { PersonDetails } from "@/types/PersonDetails";
+import SummaryPoint from "@/components/SummaryPoint.astro";
 
 interface Props {
     details: PersonDetails;
