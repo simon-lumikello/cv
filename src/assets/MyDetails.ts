@@ -5,5 +5,6 @@ export const MY_DETAILS: PersonDetails = {
     languages: ['English', 'Russian', 'Finnish'],
     location: 'Jyväskylä',
     school: 'PetrSU, Information Systems and Technologies',
-    year: 1987
+    year: 1987,
+    repoHref: 'https://github.com/simon-lumikello/cv'
 }

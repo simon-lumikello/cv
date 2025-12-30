@@ -4,4 +4,5 @@ export interface PersonDetails {
     location: string
     school: string
     languages: string[]
+    repoHref?: string
 }

@@ -25,7 +25,7 @@ import TimelineItem from "@/components/TimelineItem.astro";
         <div class="page-break"></div>
 
         <!-- Stack -->
-        <h2 class="text-2xl font-light">Tech stack</h2>
+        <h2 class="text-2xl font-light">Tech/skills</h2>
         <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 print:grid-cols-2 gap-6 w-3/4 2xl:w-1/2"
         >
@@ -40,13 +40,17 @@ import TimelineItem from "@/components/TimelineItem.astro";
         </Timeline>
 
         <!-- Github -->
-        <a
-            href="https://github.com/simon-lumikello/cv"
-            class="text-subtle mb-4 print:hidden"
-        >
-            <SummaryPoint text="This page on GitHub">
-                <Link2 slot="icon" />
-            </SummaryPoint>
-        </a>
+        {
+            MY_DETAILS.repoHref && (
+                <a
+                    href={MY_DETAILS.repoHref}
+                    class="text-subtle mb-4 print:hidden"
+                >
+                    <SummaryPoint text="This page on GitHub">
+                        <Link2 slot="icon" />
+                    </SummaryPoint>
+                </a>
+            )
+        }
     </div>
 </Layout>
