@@ -1,102 +1,102 @@
 ---
 import {
-    Activity,
-    Database,
-    Ghost,
-    ListChecks,
-    Monitor,
-    Rocket,
-    Server,
-    Workflow,
+	Activity,
+	Database,
+	Ghost,
+	ListChecks,
+	Monitor,
+	Rocket,
+	Server,
+	Workflow,
 } from "@lucide/astro";
 import TechLinksCard from "@/components/generic/TechLinksCard.astro";
 import type { Link } from "@/types/Link";
 
 const TechLinksClient: Link[] = [
-    {
-        href: "https://www.typescriptlang.org/",
-        title: "TypeScript",
-    },
-    { href: "https://react.dev/", title: "React" },
-    {
-        href: "https://plotly.com/javascript/",
-        title: "Plotly.js",
-    },
+	{
+		href: "https://www.typescriptlang.org/",
+		title: "TypeScript",
+	},
+	{ href: "https://react.dev/", title: "React" },
+	{
+		href: "https://plotly.com/javascript/",
+		title: "Plotly.js",
+	},
 
-    {
-        href: "https://playwright.dev/",
-        title: "Playwright",
-    },
-    {
-        href: "https://www.electronjs.org/",
-        title: "Electron",
-    },
+	{
+		href: "https://playwright.dev/",
+		title: "Playwright",
+	},
+	{
+		href: "https://www.electronjs.org/",
+		title: "Electron",
+	},
 ];
 
 const TechLinksBuild: Link[] = [
-    { href: "https://bun.com/", title: "Bun" },
-    { href: "https://vite.dev/", title: "Vite" },
+	{ href: "https://bun.com/", title: "Bun" },
+	{ href: "https://vite.dev/", title: "Vite" },
 ];
 
 const TechLinksServer: Link[] = [
-    {
-        href: "https://dotnet.microsoft.com/",
-        title: ".NET",
-    },
-    {
-        href: "https://dotnet.microsoft.com/en-us/languages/csharp",
-        title: "C#",
-    },
-    {
-        href: "https://dotnet.microsoft.com/en-us/apps/aspnet",
-        title: "ASP.NET",
-    },
-    { href: "https://www.openapis.org/", title: "OpenAPI" },
-    { href: "https://github.com/SignalR/SignalR", title: "SignalR" },
+	{
+		href: "https://dotnet.microsoft.com/",
+		title: ".NET",
+	},
+	{
+		href: "https://dotnet.microsoft.com/en-us/languages/csharp",
+		title: "C#",
+	},
+	{
+		href: "https://dotnet.microsoft.com/en-us/apps/aspnet",
+		title: "ASP.NET",
+	},
+	{ href: "https://www.openapis.org/", title: "OpenAPI" },
+	{ href: "https://github.com/SignalR/SignalR", title: "SignalR" },
 ];
 
 const TechLinksDB: Link[] = [
-    {
-        href: "https://www.microsoft.com/en-us/sql-server",
-        title: "MSSQL",
-    },
-    { href: "https://sqlite.org/", title: "SQLite" },
+	{
+		href: "https://www.microsoft.com/en-us/sql-server",
+		title: "MSSQL",
+	},
+	{ href: "https://sqlite.org/", title: "SQLite" },
 ];
 
 const TechLinksCI: Link[] = [
-    { href: "https://www.jenkins.io/", title: "Jenkins" },
-    {
-        href: "https://www.jetbrains.com/teamcity/",
-        title: "TeamCity",
-    },
-    { href: "https://vercel.com/", title: "Vercel" },
+	{ href: "https://www.jenkins.io/", title: "Jenkins" },
+	{
+		href: "https://www.jetbrains.com/teamcity/",
+		title: "TeamCity",
+	},
+	{ href: "https://vercel.com/", title: "Vercel" },
 ];
 
 const TechLinksWorkflow: Link[] = [
-    {
-        href: "https://www.atlassian.com/software/jira",
-        title: "Jira",
-    },
-    {
-        href: "https://bitbucket.org/product/",
-        title: "Bitbucket",
-    },
-    {
-        href: "https://www.atlassian.com/software/confluence",
-        title: "Confluence",
-    },
+	{
+		href: "https://www.atlassian.com/software/jira",
+		title: "Jira",
+	},
+	{
+		href: "https://bitbucket.org/product/",
+		title: "Bitbucket",
+	},
+	{
+		href: "https://www.atlassian.com/software/confluence",
+		title: "Confluence",
+	},
 ];
 
 const TechLinksTools: Link[] = [
-    { href: "https://canonical.com/maas", title: "MAAS" },
-    { href: "https://ubuntu.com/server", title: "Ubuntu" },
+	{ href: "https://canonical.com/maas", title: "MAAS" },
+	{ href: "https://ubuntu.com/server", title: "Ubuntu" },
 ];
 
 const TechLinksPast: Link[] = [
-    { href: "https://www.java.com/", title: "Java" },
-    { href: "https://flutter.dev/", title: "Flutter" },
-    { href: "https://www.cypress.io/", title: "Cypress" },
-    { href: "https://www.php.net/", title: "PHP" },
+	{ href: "https://www.java.com/", title: "Java" },
+	{ href: "https://flutter.dev/", title: "Flutter" },
+	{ href: "https://www.cypress.io/", title: "Cypress" },
+	{ href: "https://www.php.net/", title: "PHP" },
 ];
 ---
 
