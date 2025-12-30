@@ -7,4 +7,5 @@ export interface TimelineEntry {
     company: string
     location: string
     technologies: string[]
+    pageBreak?: boolean
 }
