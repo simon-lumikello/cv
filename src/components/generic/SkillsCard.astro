@@ -1,9 +1,9 @@
 ---
-import type { Link } from "../../types/Link";
-import LinkList from "./LinkList.astro";
+import type { Skill } from "../../types/Skill";
+import SkillsList from "./SkillsList.astro";
 
 interface Props {
-    items: Link[];
+    items: Skill[];
 }
 
 const { items } = Astro.props;
@@ -14,12 +14,12 @@ const { items } = Astro.props;
 >
     <div class="card-body items-center text-center p-6">
         <div class="avatar avatar-placeholder mb-2">
-            <div class="bg-base-300 rounded-full w-16">
+            <div class="bg-base-300 rounded-full w-16 print:w-12">
                 <slot name="icon" />
             </div>
         </div>
         <div class="flex flex-wrap justify-center gap-2">
-            <LinkList items={items} />
+            <SkillsList items={items} />
         </div>
     </div>
 </div>

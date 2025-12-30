@@ -1,0 +1,25 @@
+---
+import type { Skill } from "@/types/Skill";
+
+interface Props {
+    items: Skill[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="flex flex-wrap justify-center gap-2">
+    {
+        items.map(({ href, title }) => (
+            <div class="badge badge-soft p-3">
+                {href ? (
+                    <a class="link link-hover" href={href}>
+                        {title}
+                    </a>
+                ) : (
+                    <>{title}</>
+                )}
+            </div>
+        ))
+    }
+</div>

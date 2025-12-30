@@ -9,10 +9,10 @@ import {
     Server,
     Workflow,
 } from "@lucide/astro";
-import TechLinksCard from "@/components/generic/TechLinksCard.astro";
-import type { Link } from "@/types/Link";
+import SkillsCard from "@/components/generic/SkillsCard.astro";
+import type { Skill } from "@/types/Skill";
 
-const TechLinksClient: Link[] = [
+const SkillsClient: Skill[] = [
     {
         href: "https://www.typescriptlang.org/",
         title: "TypeScript",
@@ -31,14 +31,21 @@ const TechLinksClient: Link[] = [
         href: "https://www.electronjs.org/",
         title: "Electron",
     },
-];
-
-const TechLinksBuild: Link[] = [
     { href: "https://bun.com/", title: "Bun" },
     { href: "https://vite.dev/", title: "Vite" },
 ];
 
-const TechLinksServer: Link[] = [
+const SkillsLeadership: Skill[] = [
+    { title: "Mentoring" },
+    { title: "Workshops" },
+    { title: "Roadmapping" },
+    { title: "Solution design" },
+    { title: "Code reviews" },
+    { title: "Field support" },
+    { title: "Cross-team work" },
+];
+
+const SkillsServer: Skill[] = [
     {
         href: "https://dotnet.microsoft.com/",
         title: ".NET",
@@ -55,7 +62,7 @@ const TechLinksServer: Link[] = [
     { href: "https://github.com/SignalR/SignalR", title: "SignalR" },
 ];
 
-const TechLinksDB: Link[] = [
+const SkillsDB: Skill[] = [
     {
         href: "https://www.microsoft.com/en-us/sql-server",
         title: "MSSQL",
@@ -63,7 +70,7 @@ const TechLinksDB: Link[] = [
     { href: "https://sqlite.org/", title: "SQLite" },
 ];
 
-const TechLinksCI: Link[] = [
+const SkillsCI: Skill[] = [
     { href: "https://www.jenkins.io/", title: "Jenkins" },
     {
         href: "https://www.jetbrains.com/teamcity/",
@@ -72,7 +79,7 @@ const TechLinksCI: Link[] = [
     { href: "https://vercel.com/", title: "Vercel" },
 ];
 
-const TechLinksWorkflow: Link[] = [
+const SkillsWorkflow: Skill[] = [
     {
         href: "https://www.atlassian.com/software/jira",
         title: "Jira",
@@ -87,12 +94,12 @@ const TechLinksWorkflow: Link[] = [
     },
 ];
 
-const TechLinksTools: Link[] = [
+const SkillsTools: Skill[] = [
     { href: "https://canonical.com/maas", title: "MAAS" },
     { href: "https://ubuntu.com/server", title: "Ubuntu" },
 ];
 
-const TechLinksPast: Link[] = [
+const SkillsPast: Skill[] = [
     { href: "https://www.java.com/", title: "Java" },
     { href: "https://flutter.dev/", title: "Flutter" },
     { href: "https://www.cypress.io/", title: "Cypress" },
@@ -101,37 +108,37 @@ const TechLinksPast: Link[] = [
 ---
 
 <div
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 print:grid-cols-2 gap-6 w-3/4"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 print:grid-cols-2 gap-6 2xl:w-1/2 w-3/4"
 >
-    <TechLinksCard items={TechLinksClient}>
-        <Monitor slot="icon" />
-    </TechLinksCard>
-
-    <TechLinksCard items={TechLinksServer}>
-        <Server slot="icon" />
-    </TechLinksCard>
-
-    <TechLinksCard items={TechLinksBuild}>
+    <SkillsCard items={SkillsLeadership}>
         <Activity slot="icon" />
-    </TechLinksCard>
+    </SkillsCard>
 
-    <TechLinksCard items={TechLinksDB}>
+    <SkillsCard items={SkillsClient}>
+        <Monitor slot="icon" />
+    </SkillsCard>
+
+    <SkillsCard items={SkillsServer}>
+        <Server slot="icon" />
+    </SkillsCard>
+
+    <SkillsCard items={SkillsDB}>
         <Database slot="icon" />
-    </TechLinksCard>
+    </SkillsCard>
 
-    <TechLinksCard items={TechLinksCI}>
+    <SkillsCard items={SkillsCI}>
         <Workflow slot="icon" />
-    </TechLinksCard>
+    </SkillsCard>
 
-    <TechLinksCard items={TechLinksWorkflow}>
+    <SkillsCard items={SkillsWorkflow}>
         <ListChecks slot="icon" />
-    </TechLinksCard>
+    </SkillsCard>
 
-    <TechLinksCard items={TechLinksTools}>
+    <SkillsCard items={SkillsTools}>
         <Rocket slot="icon" />
-    </TechLinksCard>
+    </SkillsCard>
 
-    <TechLinksCard items={TechLinksPast}>
+    <SkillsCard items={SkillsPast}>
         <Ghost slot="icon" />
-    </TechLinksCard>
+    </SkillsCard>
 </div>
