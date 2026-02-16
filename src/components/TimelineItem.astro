@@ -1,0 +1,44 @@
+---
+import { CircleCheck, CirclePlay } from "@lucide/astro";
+import type { TimelineEntry } from "@/types/TimelineEntry";
+
+interface Props extends TimelineEntry {}
+
+const {
+    title,
+    description,
+    yearStart,
+    yearEnd,
+    ongoing,
+    location,
+    company,
+    technologies,
+    pageBreak,
+} = Astro.props;
+
+const yearEndValue = ongoing ? new Date().getFullYear() : yearEnd;
+---
+
+<li class="-mt-2">
+    {pageBreak && <div class="page-break" />}
+    <div class="timeline-middle">
+        {ongoing ? <CirclePlay /> : <CircleCheck />}
+    </div>
+    <div class="timeline-start self-start mt-2 ms-4">
+        <time class="font-mono italic"
+            >{yearEndValue ? `${yearStart}–${yearEndValue}` : yearStart}</time
+        >
+        <div class="text-subtle font-light">{location}</div>
+    </div>
+    <div class="timeline-end max-md:w-7/8 md:mt-1.5 ms-4 place-self-start">
+        <div class="text-lg font-medium">{title}</div>
+        <div class="text-lg font-light">{company}</div>
+        <article class="prose my-4">
+            {description}
+        </article>
+        <article class="prose mb-4 text-subtle">
+            {technologies.join(", ")}
+        </article>
+    </div>
+    <hr />
+</li>

@@ -1,0 +1,19 @@
+---
+
+interface Props extends  PetProject{
+}
+
+const { name, href,description,yearStart } =  Astro.props;
+---
+
+<div class="card bg-base-200 w-96 shadow-md">
+    <div class="card-body items-center text-center">
+        <h1 class="card-title text-2xl font-light">{name}</h1>
+        
+        <div>  <a class="link link-hover" href={href}>
+                        {href}
+                    </a></div>
+        <div>{description}</div>
+        <div>{yearStart}</div>
+    </div>
+</div>

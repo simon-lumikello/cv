@@ -1,0 +1,60 @@
+---
+import {
+  Baby,
+  Download,
+  GraduationCap,
+  Languages,
+  MapPinned,
+  Link,
+} from "@lucide/astro";
+import { Image } from "astro:assets";
+import ava from "@/assets/ava.png";
+import type { PersonDetails } from "@/types/PersonDetails";
+import SummaryPoint from "@/components/SummaryPoint.astro";
+
+interface Props {
+  details: PersonDetails;
+}
+
+const { details } = Astro.props;
+const { name, location, year, school, languages, linkedinHref } = details;
+---
+
+<div class="card bg-base-200 w-96 shadow-md relative">
+  <div class="card-actions absolute top-2 end-2 print:hidden">
+    <button class="btn btn-lg btn-circle btn-soft" onclick="window.print()">
+      <Download />
+    </button>
+  </div>
+
+  <div class="card-body items-center text-center">
+    <h1 class="card-title text-2xl font-light">{name}</h1>
+    <figure class="avatar my-4 hover-3d">
+      <div class="mask mask-hexagon-2 w-48">
+        <Image src={ava} alt={name} fetchpriority="high" priority />
+      </div>
+    </figure>
+
+    <SummaryPoint text={`${year}`}><Baby slot="icon" /></SummaryPoint>
+
+    <SummaryPoint text={location}>
+      <MapPinned slot="icon" />
+    </SummaryPoint>
+
+    <SummaryPoint text={school}>
+      <GraduationCap slot="icon" />
+    </SummaryPoint>
+
+    <SummaryPoint text={languages.join(", ")}>
+      <Languages slot="icon" />
+    </SummaryPoint>
+
+    {
+      linkedinHref && (
+        <SummaryPoint text="Linkedin profile" href={linkedinHref}>
+          <Link slot="icon" />
+        </SummaryPoint>
+      )
+    }
+  </div>
+</div>

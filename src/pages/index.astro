@@ -1,0 +1,64 @@
+---
+import "@/styles/global.css";
+import { Link2 } from "@lucide/astro";
+import Layout from "@/layouts/Layout.astro";
+import Bio from "@/assets/bio.md";
+import { MY_DETAILS } from "@/assets/MyDetails";
+import { MY_SKILLS } from "@/assets/MySkills";
+import { MY_TIMELINE_ENTRIES } from "@/assets/MyTimeline";
+import DetailsCard from "@/components/DetailsCard.astro";
+import SkillsCard from "@/components/SkillsCard.astro";
+import SummaryPoint from "@/components/SummaryPoint.astro";
+import Timeline from "@/components/Timeline.astro";
+import TimelineItem from "@/components/TimelineItem.astro";
+import { MY_PROJECTS } from "@/assets/MyProjects";
+import ProjectCard from "@/components/ProjectCard.astro";
+---
+
+<Layout>
+    <div class="flex flex-col items-center gap-10 pt-8">
+        <!-- Details -->
+        <DetailsCard details={MY_DETAILS} />
+
+        <!-- Bio -->
+        <article class="prose prose-slate w-3/4">
+            <Bio />
+        </article>
+        <div class="page-break"></div>
+
+        <!-- Stack -->
+        <h2 class="text-2xl font-light">Tech/skills</h2>
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 print:grid-cols-2 gap-6 w-3/4 2xl:w-1/2"
+        >
+            {MY_SKILLS.map((skill) => <SkillsCard skillGroup={skill} />)}
+        </div>
+        <div class="page-break"></div>
+
+        <!-- Timeline -->
+        <h2 class="text-2xl font-light">Timeline</h2>
+        <Timeline>
+            {MY_TIMELINE_ENTRIES.map((entry) => <TimelineItem {...entry} />)}
+        </Timeline>
+
+        <!-- Pet projects -->
+        <h2 class="text-2xl font-light">Pet projects</h2>
+         <div class="flex flex-wrap justify-center gap-2">
+            {MY_PROJECTS.map((entry) => <ProjectCard {...entry} />)}
+        </div>
+
+        <!-- Github -->
+        {
+            MY_DETAILS.repoHref && (
+                <a
+                    href={MY_DETAILS.repoHref}
+                    class="text-subtle mb-4 print:hidden"
+                >
+                    <SummaryPoint text="This page on GitHub">
+                        <Link2 slot="icon" />
+                    </SummaryPoint>
+                </a>
+            )
+        }
+    </div>
+</Layout>

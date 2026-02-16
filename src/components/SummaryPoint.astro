@@ -1,0 +1,25 @@
+---
+interface Props {
+  text: string;
+  href?: string;
+}
+
+const { text, href } = Astro.props;
+---
+
+<div class="flex flex-row gap-2 items-center">
+    <div class="icon">
+
+        <slot name="icon" />
+    </div>
+  {
+    href ? (
+      <a class="link link-hover flex flex-row gap-2" href={href}>
+        <span class="print:hidden!">{text}</span>
+        <span class="hidden print:block">{href}</span>
+      </a>
+    ) : (
+      <div>{text}</div>
+    )
+  }
+</div>
