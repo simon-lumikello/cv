@@ -1,17 +1,9 @@
-I have been part of the [Valmet IQ Machine Vision](https://www.valmet.com/automation/quality-management/machine-vision/) engineering team since 2010. Most of my work has been about keeping a long-lived, business-critical product healthy while the company, technology stack, and requirements around it changed.
+Software engineer with over 15 years of experience working on [Valmet IQ Machine Vision](https://www.valmet.com/automation/quality-management/machine-vision/)
 
-I joined the team to take over UI development for a recently acquired software product. With a large part of the original team no longer involved, I focused on stabilizing and cleaning up the codebase, fixing issues, developing new features, and setting up CI/CD pipelines and development practices to make releases predictable and maintainable.
+I’ve spent most of my time on UI development, leading the transition of our UI from Java to React and building our product's API from the ground up using the OpenAPI specification. 
 
-From 2018 onward, in order to simplify licensing, modernize the UI and address the increasingly strict security requirements, I proposed and led the transition from a legacy Java-based system to a modern web stack using React, OpenAPI, and .NET.
+Over the years, my work has covered many other areas — from tracking down bugs in server-side code to designing and implementing entirely new sub-products, maintaining internal tools and CI/CD pipelines, improving team-wide workflows and infrastructure.
 
-My responsibilities often reached beyond the UI: database design, query optimization, APIs, testing, documentation, and more.
+My current tech stack: React, OpenAPI, and .NET; in hobby projects — Next.js, Supabase and Vercel. In the past, I’ve worked with a wide range of technologies, from ActionScript in Macromedia Flash (the good old days) and PHP to Java and Flutter. I’ve also built and released several Android apps.
 
-I take into account real-world use by our customers as well as project engineers responsible for system installation and operation in industrial environments.
-
-In addition to product development, I maintain the surrounding tooling and infrastructure: Jira and Bitbucket administration, Jenkins pipelines and modern build tools such as Bun and Vite.
-
-I focus on steady, incremental improvements to the codebase and the surrounding development routines, from packaging and releases to team workflows, while keeping the stack up to date as it evolves.
-
-Alongside my main responsibilities, I keep up with new technologies through personal projects, learning about Arduino, 3D modeling and printing, building and publishing Android apps with Flutter, building Next.js apps and deploying to Vercel.
-
-Note: My involvement with the Valmet IQ Machine Vision project has been continuous since 2010. While my title and home base have changed, I have stayed hands-on with the project through its development.
+I’ve been developing software since long before AI, but recently I’ve found effective ways to bring AI tools into my existing workflows and make them genuinely useful.

@@ -7,8 +7,7 @@ export const MY_TIMELINE_ENTRIES: TimelineEntry[] = [
         title: "Chief software design engineer",
         company: "Valmet Automation",
         location: "Jyväskylä",
-        description:
-            "All points from the previous period still apply, but now we add another set of challenges provided by the new cybersecurity regulations.",
+        description: "In addition to building new UI features and maintaining the codebase, I work on team-wide workflows and tools.",
         technologies: [
             "Playwright",
             "React",
@@ -149,7 +148,7 @@ Worked as a subcontractor for Metso Automation, maintaining and improving the us
         company: "Freelance",
         location: "Petrozavodsk",
         description: `
-Worked as freelance Web Developer & Graphic Designer. Projects ranged from simple static websites to large portals with established user base.
+Worked as a freelance web developer & graphic designer. Projects ranged from simple static websites to large portals with established user base.
         `,
         technologies: ["HTML", "CSS", "PHP", "JavaScript", "MySQL"],
     },
