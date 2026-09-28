@@ -1,18 +1,35 @@
 ---
 import Analytics from "@vercel/analytics/astro";
+import { getImage } from "astro:assets";
+import ava from "@/assets/ava.png";
 import { MY_DETAILS } from "@/assets/MyDetails";
 
-const { name } = MY_DETAILS;
+const { name, description } = MY_DETAILS;
+const title = `CV: ${name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = await getImage({ src: ava, width: 600, format: "jpg" });
+const ogImageUrl = new URL(ogImage.src, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="motion-safe:scroll-smooth">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>CV: {name}</title>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:alt" content={name} />
+        <meta name="twitter:card" content="summary" />
+
         <Analytics />
     </head>
     <body>

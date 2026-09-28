@@ -2,7 +2,13 @@
 import { CircleArrowUp } from "@lucide/astro";
 ---
 
-<ul class="timeline timeline-snap-icon timeline-compact timeline-vertical px-4">
+<!--
+    daisyUI's snap-icon rule overrides compact's empty first column (same specificity, later in the stylesheet),
+    so the compact layout is restored with a utility
+-->
+<ul
+    class="timeline timeline-snap-icon timeline-compact timeline-vertical px-4 *:[--timeline-col-start:0]"
+>
     <slot />
     <li class="-mt-2">
         <div class="timeline-middle">

@@ -1,4 +1,4 @@
-interface PetProject {
+export interface PetProject {
     name: string
     href: string
     description: string
@@ -6,4 +6,6 @@ interface PetProject {
 
     // when not provided - treat this entry as single year instead of year range
     yearEnd?: number
+
+    technologies?: string[]
 }

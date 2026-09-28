@@ -1,44 +1,60 @@
 ---
 import { CircleCheck, CirclePlay } from "@lucide/astro";
+import TimelineRole from "@/components/TimelineRole.astro";
 import type { TimelineEntry } from "@/types/TimelineEntry";
+import { formatRolesYears } from "@/utils/formatYears";
 
 interface Props extends TimelineEntry {}
 
-const {
-    title,
-    description,
-    yearStart,
-    yearEnd,
-    ongoing,
-    location,
-    company,
-    technologies,
-    pageBreak,
-} = Astro.props;
+const { company, companyNote, roles } = Astro.props;
 
-const yearEndValue = ongoing ? new Date().getFullYear() : yearEnd;
+// roles are ordered newest first
+const latest = roles[0];
+const ongoing = latest.ongoing;
+const years = formatRolesYears(roles);
+
+const locations = new Set(roles.map((role) => role.location));
+const location = locations.size === 1 ? latest.location : undefined;
 ---
 
 <li class="-mt-2">
-    {pageBreak && <div class="page-break" />}
     <div class="timeline-middle">
         {ongoing ? <CirclePlay /> : <CircleCheck />}
     </div>
     <div class="timeline-start self-start mt-2 ms-4">
-        <time class="font-mono italic"
-            >{yearEndValue ? `${yearStart}–${yearEndValue}` : yearStart}</time
-        >
-        <div class="text-subtle font-light">{location}</div>
+        <time class="font-mono italic">{years}</time>
+        {location && <div class="text-subtle font-light">{location}</div>}
     </div>
-    <div class="timeline-end max-md:w-7/8 md:mt-1.5 ms-4 place-self-start">
-        <div class="text-lg font-medium">{title}</div>
-        <div class="text-lg font-light">{company}</div>
-        <article class="prose my-4">
-            {description}
-        </article>
-        <article class="prose mb-4 text-subtle">
-            {technologies.join(", ")}
-        </article>
+    <div class="timeline-end max-md:w-7/8 md:mt-1.5 ms-4 mb-8 place-self-start">
+        {
+            roles.length === 1 ? (
+                <>
+                    <div class="text-lg font-medium">{latest.title}</div>
+                    <div class="text-lg font-light">{company}</div>
+                    <article class="prose my-4">{latest.description}</article>
+                    {latest.technologies && (
+                        <article class="prose text-subtle">
+                            {latest.technologies.join(", ")}
+                        </article>
+                    )}
+                </>
+            ) : (
+                <>
+                    <div class="text-lg font-medium">{company}</div>
+                    {companyNote && (
+                        <div class="text-subtle font-light">{companyNote}</div>
+                    )}
+                    <ol class="mt-5 ms-3 border-s-2 border-base-content/15">
+                        {roles.map((role, i) => (
+                            <TimelineRole
+                                role={role}
+                                isFirstAtCompany={i === roles.length - 1}
+                            />
+                        ))}
+                    </ol>
+                </>
+            )
+        }
     </div>
     <hr />
 </li>

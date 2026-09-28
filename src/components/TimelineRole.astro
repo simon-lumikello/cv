@@ -1,0 +1,52 @@
+---
+import { ChevronsUp, CircleDot, Sparkles } from "@lucide/astro";
+import type { RoleChange, TimelineRole } from "@/types/TimelineEntry";
+import { formatYears } from "@/utils/formatYears";
+import { ROLE_CHANGE_LABELS } from "@/utils/roleChanges";
+
+interface Props {
+    role: TimelineRole;
+
+    // the first role lists its full stack, later ones only what was new
+    isFirstAtCompany: boolean;
+}
+
+const CHANGE_STYLES = {
+    promotion: { icon: ChevronsUp, color: "text-success", badge: "badge-success" },
+    responsibility: { icon: Sparkles, color: "text-info", badge: "badge-info" },
+} satisfies Record<RoleChange, unknown>;
+
+const { role, isFirstAtCompany } = Astro.props;
+const { title, location, description, technologies, change, yearStart, yearEnd, ongoing } = role;
+const changeInfo = change && { ...CHANGE_STYLES[change], label: ROLE_CHANGE_LABELS[change] };
+const Icon = changeInfo ? changeInfo.icon : CircleDot;
+---
+
+<li class="relative ps-6 pb-8 last:pb-0">
+    <span
+        class:list={[
+            "absolute -start-[13px] top-0.5 flex size-6 items-center justify-center rounded-full bg-base-100",
+            changeInfo ? changeInfo.color : "text-base-content/50",
+        ]}
+    >
+        <Icon class="size-4" />
+    </span>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <div class="text-lg font-medium">{title}</div>
+        {changeInfo && <span class:list={["badge badge-sm badge-soft", changeInfo.badge]}>{changeInfo.label}</span>}
+    </div>
+    <div class="text-subtle">
+        <time class="font-mono">{formatYears(yearStart, yearEnd, ongoing)}</time> · {location}
+    </div>
+    <article class="prose my-3">
+        {description}
+    </article>
+    {
+        technologies && (
+            <article class="prose text-subtle">
+                {isFirstAtCompany ? "" : "New: "}
+                {technologies.join(", ")}
+            </article>
+        )
+    }
+</li>

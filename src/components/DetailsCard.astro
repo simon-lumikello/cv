@@ -1,7 +1,6 @@
 ---
 import {
   Baby,
-  Download,
   GraduationCap,
   Languages,
   MapPinned,
@@ -17,44 +16,48 @@ interface Props {
 }
 
 const { details } = Astro.props;
-const { name, location, year, school, languages, linkedinHref } = details;
+const { name, location, year, school, degree, languages, linkedinHref, githubHref } = details;
 ---
 
-<div class="card bg-base-200 w-96 shadow-md relative">
-  <div class="card-actions absolute top-2 end-2 print:hidden">
-    <button class="btn btn-lg btn-circle btn-soft" onclick="window.print()">
-      <Download />
-    </button>
-  </div>
-
-  <div class="card-body items-center text-center">
-    <h1 class="card-title text-2xl font-light">{name}</h1>
-    <figure class="avatar my-4 hover-3d">
-      <div class="mask mask-hexagon-2 w-48">
+<!-- same width as the bio and skills below, so the page reads as one column -->
+<div class="card bg-base-200 w-full md:w-3/4 max-w-[65ch] shadow-md">
+  <!-- photo beside the details from sm up, stacked above them on phones -->
+  <div class="card-body grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-x-8 gap-y-4 sm:gap-y-3">
+    <!-- daisyUI's avatar centres itself, so the top alignment has to be set on it directly -->
+    <figure class="avatar hover-3d justify-self-center sm:self-start">
+      <div class="mask mask-hexagon-2 w-40">
         <Image src={ava} alt={name} fetchpriority="high" priority />
       </div>
     </figure>
 
-    <SummaryPoint text={`${year}`}><Baby slot="icon" /></SummaryPoint>
+    <div class="flex flex-col gap-2">
+      <h1 class="text-2xl font-light mb-1 text-center sm:text-start">{name}</h1>
+      {year && (
+        <SummaryPoint text={`${year}`}><Baby slot="icon" /></SummaryPoint>
+      )}
 
-    <SummaryPoint text={location}>
-      <MapPinned slot="icon" />
-    </SummaryPoint>
+      <SummaryPoint text={location}>
+        <MapPinned slot="icon" />
+      </SummaryPoint>
 
-    <SummaryPoint text={school}>
-      <GraduationCap slot="icon" />
-    </SummaryPoint>
+      <SummaryPoint text={degree ? [school, degree] : school}>
+        <GraduationCap slot="icon" />
+      </SummaryPoint>
 
-    <SummaryPoint text={languages.join(", ")}>
-      <Languages slot="icon" />
-    </SummaryPoint>
+      <SummaryPoint text={languages.join(", ")}>
+        <Languages slot="icon" />
+      </SummaryPoint>
 
-    {
-      linkedinHref && (
-        <SummaryPoint text="LinkedIn profile" href={linkedinHref}>
-          <Link slot="icon" />
-        </SummaryPoint>
-      )
-    }
+      {
+        (linkedinHref || githubHref) && (
+          <SummaryPoint>
+            <Link slot="icon" />
+            {linkedinHref && <a class="link link-hover" href={linkedinHref}>LinkedIn</a>}
+            {linkedinHref && githubHref && <span class="opacity-50"> · </span>}
+            {githubHref && <a class="link link-hover" href={githubHref}>GitHub</a>}
+          </SummaryPoint>
+        )
+      }
+    </div>
   </div>
 </div>

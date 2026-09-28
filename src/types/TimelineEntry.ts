@@ -1,18 +1,32 @@
-export interface TimelineEntry {
+// what changed compared to the previous role at the same company
+export type RoleChange = "promotion" | "responsibility"
+
+export interface TimelineRole {
     yearStart: number
 
-    // when not provided - treat this entry as single year instead of year range
+    // when not provided - treat this role as single year instead of year range
     yearEnd?: number
 
     // when true - the end year will be automatically rendered as current year
     ongoing?: boolean
     title: string
-    description: string
-    company: string
     location: string
-    technologies: string[]
+    description: string
 
-    // when true - page break div will be inserted before this entry
-    // this may be helpful when optimizing the printable view
-    pageBreak?: boolean
+    // omitted for the first role at a company
+    change?: RoleChange
+
+    // the first role at a company lists its full stack,
+    // later roles list only the technologies not already listed for an earlier role
+    technologies?: string[]
+}
+
+export interface TimelineEntry {
+    company: string
+
+    // e.g. the company's former name
+    companyNote?: string
+
+    // newest first
+    roles: TimelineRole[]
 }

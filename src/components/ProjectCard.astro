@@ -1,19 +1,31 @@
 ---
+import type { PetProject } from "@/types/PetProject";
+import { displayUrl } from "@/utils/displayUrl";
+import { formatYears } from "@/utils/formatYears";
 
-interface Props extends  PetProject{
-}
+interface Props extends PetProject {}
 
-const { name, href,description,yearStart } =  Astro.props;
+const { name, href, description, yearStart, yearEnd, technologies } = Astro.props;
 ---
 
-<div class="card bg-base-200 w-96 shadow-md">
-    <div class="card-body items-center text-center">
-        <h1 class="card-title text-2xl font-light">{name}</h1>
-        
-        <div>  <a class="link link-hover" href={href}>
-                        {href}
-                    </a></div>
-        <div>{description}</div>
-        <div>{yearStart}</div>
+<div class="card bg-base-200 shadow-md">
+    <div class="card-body gap-3">
+        <div>
+            <div class="flex items-baseline justify-between gap-3">
+                <h3 class="card-title text-xl font-medium">{name}</h3>
+                <time class="text-subtle not-italic font-mono">{formatYears(yearStart, yearEnd)}</time>
+            </div>
+            <a class="link link-hover text-sm text-base-content/70" href={href}>{displayUrl(href)}</a>
+        </div>
+        <p>{description}</p>
+        {
+            technologies && (
+                <div class="flex flex-wrap gap-1.5 mt-auto">
+                    {technologies.map((tech) => (
+                        <span class="badge badge-sm badge-soft">{tech}</span>
+                    ))}
+                </div>
+            )
+        }
     </div>
 </div>

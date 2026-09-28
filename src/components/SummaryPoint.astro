@@ -1,25 +1,36 @@
 ---
 interface Props {
-  text: string;
+  // several lines are rendered one under another; without text the default slot is rendered instead
+  text?: string | string[];
   href?: string;
 }
 
 const { text, href } = Astro.props;
+const lines = text === undefined ? [] : Array.isArray(text) ? text : [text];
 ---
 
-<div class="flex flex-row gap-2 items-center">
+<div class="flex flex-row gap-2 items-start">
+  <!-- one line tall, so the icon lines up with the first line of multi-line text -->
+  <div class="flex h-lh items-center">
     <div class="icon">
-
-        <slot name="icon" />
+      <slot name="icon" />
     </div>
+  </div>
   {
-    href ? (
-      <a class="link link-hover flex flex-row gap-2" href={href}>
-        <span class="print:hidden!">{text}</span>
-        <span class="hidden print:block">{href}</span>
+    text === undefined ? (
+      <div>
+        <slot />
+      </div>
+    ) : href ? (
+      <a class="link link-hover" href={href}>
+        {lines.join(" ")}
       </a>
     ) : (
-      <div>{text}</div>
+      <div>
+        {lines.map((line) => (
+          <div>{line}</div>
+        ))}
+      </div>
     )
   }
 </div>

@@ -1,0 +1,38 @@
+---
+import type { SkillGroup } from "@/types/SkillGroup";
+
+interface Props {
+    skillGroups: SkillGroup[];
+}
+
+const { skillGroups } = Astro.props;
+---
+
+<dl class="w-full md:w-3/4 max-w-[65ch] divide-y divide-base-content/10">
+    {
+        skillGroups.map(({ title, icon: Icon, items }) => (
+            <div class="grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[11rem_1fr]">
+                <dt class="flex items-center gap-2 font-medium">
+                    <span class="icon text-base-content/60">
+                        <Icon />
+                    </span>
+                    {title}
+                </dt>
+                <dd class="leading-relaxed">
+                    {items.map(({ href, title }, i) => (
+                        <>
+                            {href ? (
+                                <a class="link link-hover" href={href}>
+                                    {title}
+                                </a>
+                            ) : (
+                                title
+                            )}
+                            {i < items.length - 1 && ", "}
+                        </>
+                    ))}
+                </dd>
+            </div>
+        ))
+    }
+</dl>
