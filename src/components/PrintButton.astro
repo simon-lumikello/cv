@@ -1,0 +1,16 @@
+---
+import { Printer } from "@lucide/astro";
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<!-- the page carries a print-only copy of the print layout, so printing it directly is enough;
+     without JS this is a plain link to the print layout -->
+<a href="/print" class:list={["btn btn-sm btn-soft", className]} onclick="window.print(); return false;">
+    <Printer class="size-4" />
+    Print CV
+</a>

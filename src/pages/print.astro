@@ -1,0 +1,16 @@
+---
+import { ArrowLeft, Printer } from "@lucide/astro";
+import PrintLayout from "@/layouts/PrintLayout.astro";
+import PrintCv from "@/components/PrintCv.astro";
+---
+
+<PrintLayout>
+    <nav class="flex justify-center gap-2 p-4 print:hidden">
+        <a href="/" class="btn btn-sm btn-ghost"><ArrowLeft class="size-4" /> Back to CV</a>
+        <button class="btn btn-sm btn-primary" onclick="window.print()">
+            <Printer class="size-4" /> Print
+        </button>
+    </nav>
+
+    <PrintCv />
+</PrintLayout>

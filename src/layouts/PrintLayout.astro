@@ -1,0 +1,30 @@
+---
+import "@/styles/global.css";
+import Analytics from "@vercel/analytics/astro";
+import { MY_DETAILS } from "@/assets/MyDetails";
+
+const { name } = MY_DETAILS;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- same content as the main page -->
+        <meta name="robots" content="noindex" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <!-- also the default file name when saving as PDF -->
+        <title>{name} – CV</title>
+        <Analytics />
+    </head>
+    <body class="bg-base-300 print:bg-white">
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+    html {
+        color-scheme: light;
+    }
+</style>
