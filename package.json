@@ -10,13 +10,13 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.10",
-		"@lucide/astro": "^1.33.0",
+		"@lucide/astro": "^1.48.0",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tailwindcss/vite": "^4.3.3",
 		"@vercel/analytics": "^2.0.1",
-		"astro": "^7.2.4",
-		"daisyui": "^5.7.20",
+		"astro": "^7.3.5",
+		"daisyui": "^5.7.46",
 		"tailwindcss": "^4.3.3",
-		"typescript": "7"
+		"typescript": "^7.0.2"
 	}
 }
