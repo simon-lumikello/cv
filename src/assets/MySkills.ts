@@ -1,5 +1,5 @@
 import type { SkillGroup } from "@/types/SkillGroup"
-import { Activity, Server, Monitor, FlaskConical, Workflow, Database, Rocket, ListChecks, Smartphone } from "@lucide/astro"
+import { Activity, Server, Monitor, FlaskConical, Workflow, Database, Rocket, ListChecks, Smartphone, Sparkles } from "@lucide/astro"
 
 export const MY_SKILLS: SkillGroup[] = [
     
@@ -114,6 +114,17 @@ export const MY_SKILLS: SkillGroup[] = [
         items: [
             { href: "https://flutter.dev/", title: "Flutter" },
             { href: "https://reactnative.dev/", title: "React Native" },
+        ],
+    },
+    {
+        title: "AI",
+        icon: Sparkles,
+        items: [
+            { href: "https://vercel.com/ai-gateway", title: "Vercel AI Gateway" },
+            { href: "https://claude.com/product/claude-code", title: "Claude Code" },
+            { href: "https://antigravity.google/", title: "Antigravity" },
+            { href: "https://kiro.dev/", title: "Kiro" },
+            { href: "https://chatgpt.com/codex/", title: "ChatGPT Codex" },
         ],
     },
     {
