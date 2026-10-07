@@ -9,6 +9,13 @@ export const MY_PROJECTS: PetProject[] = [
         technologies: ["TypeScript", "React", "Vercel"],
     },
     {
+        name: "Onshape Knurl",
+        href: "https://github.com/simon-lumikello/onshape-knurl",
+        description: "Knurl custom feature for Onshape",
+        yearStart: 2026,
+        technologies: ["TypeScript", "Onshape FeatureScript"],
+    },
+    {
         name: "Tag maker",
         href: "https://nimikyltti.lumikello.net",
         description: "Design 3D-printable tags for doors and mailboxes",
