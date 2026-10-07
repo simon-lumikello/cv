@@ -2,6 +2,13 @@ import type { PetProject } from "@/types/PetProject"
 
 export const MY_PROJECTS: PetProject[] = [
     {
+        name: "Dynasty Atlas",
+        href: "https://atlas.lumikello.net",
+        description: "Interactive atlas of European royal dynasties.",
+        yearStart: 2026,
+        technologies: ["TypeScript", "React", "Vercel"],
+    },
+    {
         name: "Tag maker",
         href: "https://nimikyltti.lumikello.net",
         description: "Design 3D-printable tags for doors and mailboxes",
