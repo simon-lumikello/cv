@@ -1,18 +1,9 @@
----
-import { CircleArrowUp } from "@lucide/astro";
----
-
 <!--
     daisyUI's snap-icon rule overrides compact's empty first column (same specificity, later in the stylesheet),
-    so the compact layout is restored with a utility
+    so the compact layout is restored with a utility; the oldest entry ends the line at its marker
 -->
 <ul
-    class="timeline timeline-snap-icon timeline-compact timeline-vertical px-4 *:[--timeline-col-start:0]"
+    class="timeline timeline-snap-icon timeline-compact timeline-vertical px-4 *:[--timeline-col-start:0] [&>li:last-child>hr]:hidden"
 >
     <slot />
-    <li class="-mt-2">
-        <div class="timeline-middle">
-            <CircleArrowUp />
-        </div>
-    </li>
 </ul>

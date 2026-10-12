@@ -22,10 +22,11 @@ const changeInfo = change && { ...CHANGE_STYLES[change], label: ROLE_CHANGE_LABE
 const Icon = changeInfo ? changeInfo.icon : CircleDot;
 ---
 
-<li class="relative ps-6 pb-8 last:pb-0">
+<!-- each role draws the line down to the next one; the oldest keeps the space but ends the line at its marker -->
+<li class="relative ps-6 pb-8 last:pb-0 border-s-2 border-base-content/15 last:border-s-transparent">
     <span
         class:list={[
-            "absolute -start-[13px] top-0.5 flex size-6 items-center justify-center rounded-full bg-base-100",
+            "absolute -start-[13px] top-0 flex size-6 items-center justify-center rounded-full bg-base-100",
             changeInfo ? changeInfo.color : "text-base-content/50",
         ]}
     >
