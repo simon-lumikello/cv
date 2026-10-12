@@ -128,7 +128,7 @@ export const MY_SKILLS: SkillGroup[] = [
         ],
     },
     {
-        title: "Leadership",
+        title: "Team & process",
         icon: Activity,
         items: [
             { title: "Process and workflow design" },
