@@ -14,6 +14,9 @@ export const MY_PROJECTS: PetProject[] = [
         description: "Knurl custom feature for Onshape",
         yearStart: 2026,
         technologies: ["TypeScript", "Onshape FeatureScript"],
+        screenshot: {
+            url: "https://raw.githubusercontent.com/simon-lumikello/onshape-knurl/main/docs/images/showcase.png",
+        },
     },
     {
         name: "Tag maker",
@@ -28,6 +31,7 @@ export const MY_PROJECTS: PetProject[] = [
         description: "Google Calendar-based family dashboard",
         yearStart: 2026,
         technologies: ["TypeScript", "React", "Vercel"],
+        screenshot: { clicks: ["Got it", "Minimize radar"], time: "15:00" },
     },
     {
         name: "Weather clock",
@@ -42,6 +46,7 @@ export const MY_PROJECTS: PetProject[] = [
         description: "Weather map with pretty cloud visualization and a few hidden tricks",
         yearStart: 2026,
         technologies: ["TypeScript", "Vercel"],
+        screenshot: { clicks: ["Settings", "Sheer", "Noon", "Apply"], delayMs: 6000 },
     },
     {
         name: "lumikello.net",
@@ -49,6 +54,7 @@ export const MY_PROJECTS: PetProject[] = [
         description: "Personal website experimental landing page",
         yearStart: 2026,
         technologies: ["TypeScript", "Vercel"],
+        screenshot: { colorScheme: "light" },
     },
     {
         name: "Jaksa! Jaksa!",

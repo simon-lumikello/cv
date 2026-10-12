@@ -7,7 +7,8 @@
 		"check": "astro check",
 		"build": "astro check && astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"screenshots": "bun scripts/screenshots.ts"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.10",
@@ -19,5 +20,9 @@
 		"daisyui": "^5.7.46",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^6.0.3"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.4.3",
+		"playwright": "^1.64.0"
 	}
 }
