@@ -27,8 +27,11 @@ const { name, location, year, school, degree, languages, linkedinHref, githubHre
     on phones the source order applies: photo, details, print button
   -->
   <div class="card-body grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-x-8 gap-y-4 sm:gap-y-3">
-    <!-- daisyUI's avatar centres itself, so the top alignment has to be set on it directly -->
-    <figure class="avatar hover-3d justify-self-center sm:self-start">
+    <!--
+      daisyUI's avatar centres itself, so the top alignment has to be set on it directly;
+      cards clip their figures, which would cut off the hexagon's points when hover-3d zooms it
+    -->
+    <figure class="avatar hover-3d overflow-visible justify-self-center sm:self-start">
       <div class="mask mask-hexagon-2 w-40">
         <Image src={ava} alt={name} fetchpriority="high" priority />
       </div>
