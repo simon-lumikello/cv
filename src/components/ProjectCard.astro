@@ -1,14 +1,22 @@
 ---
+import { Image } from "astro:assets";
 import type { PetProject } from "@/types/PetProject";
 import { displayUrl } from "@/utils/displayUrl";
 import { formatYears } from "@/utils/formatYears";
+import { slug } from "@/utils/slug";
 
 interface Props extends PetProject {}
 
 const { name, href, description, yearStart, yearEnd, technologies } = Astro.props;
+
+// written by `bun run screenshots`; a project without one renders as a plain card.
+// It goes under the content, after the card body's bottom padding, fading in from the card body and
+// clipped by the card's rounded bottom corners.
+const screenshots = import.meta.glob<ImageMetadata>("/src/assets/projects/*.jpg", { eager: true, import: "default" });
+const screenshot = screenshots[`/src/assets/projects/${slug(name)}.jpg`];
 ---
 
-<div class="card bg-base-200 card-frame">
+<div class="card bg-base-200 card-frame overflow-hidden group">
     <div class="card-body gap-3">
         <div>
             <div class="flex items-baseline justify-between gap-3">
@@ -28,4 +36,37 @@ const { name, href, description, yearStart, yearEnd, technologies } = Astro.prop
             )
         }
     </div>
+    {
+        screenshot && (
+            <a href={href} tabindex="-1" aria-hidden="true" class="shot block">
+                <Image
+                    src={screenshot}
+                    alt=""
+                    widths={[480, 960]}
+                    sizes="(min-width: 1280px) 30vw, (min-width: 768px) 40vw, 100vw"
+                    class="w-full aspect-[16/10] object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
+                />
+            </a>
+        )
+    }
 </div>
+
+<style>
+    /* smoothstep easing over the top 60%: a linear fade shows a hard edge where it starts and ends */
+    .shot {
+        mask-image: linear-gradient(
+            to bottom,
+            rgb(0 0 0 / 0) 0%,
+            rgb(0 0 0 / 0.028) 6%,
+            rgb(0 0 0 / 0.104) 12%,
+            rgb(0 0 0 / 0.216) 18%,
+            rgb(0 0 0 / 0.352) 24%,
+            rgb(0 0 0 / 0.5) 30%,
+            rgb(0 0 0 / 0.648) 36%,
+            rgb(0 0 0 / 0.784) 42%,
+            rgb(0 0 0 / 0.896) 48%,
+            rgb(0 0 0 / 0.972) 54%,
+            #000 60%
+        );
+    }
+</style>
