@@ -12,7 +12,8 @@ const { skillGroups } = Astro.props;
     {
         skillGroups.map(({ title, icon: Icon, items }) => (
             <div class="grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[11rem_1fr]">
-                <dt class="flex items-center gap-2 font-medium">
+                <!-- top-aligned with the same line height, so the title sits on the first line of a wrapped list -->
+                <dt class="flex items-center gap-2 self-start font-medium leading-relaxed">
                     <span class="icon text-base-content/60">
                         <Icon />
                     </span>
