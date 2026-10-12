@@ -2,8 +2,16 @@
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
 
+/* the site forces a daisyUI theme, so dark: follows it instead of the OS preference */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 .text-subtle {
   @apply text-gray-500 dark:text-gray-400 text-sm italic;
+}
+
+/* shared outline and shadow of the page's cards: a faint light edge and a soft lift off the background */
+.card-frame {
+  @apply border border-base-content/[0.07] shadow-lg shadow-black/25;
 }
 
 .icon {
