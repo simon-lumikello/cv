@@ -12,8 +12,8 @@ const { name, href, hrefLabel, description, yearStart, yearEnd, technologies } =
 // written by `bun run screenshots`; a project without one renders as a plain card.
 // It goes under the content, after the card body's bottom padding, fading in from the card body and
 // clipped by the card's rounded bottom corners.
-const screenshots = import.meta.glob<ImageMetadata>("/src/assets/projects/*.jpg", { eager: true, import: "default" });
-const screenshot = screenshots[`/src/assets/projects/${slug(name)}.jpg`];
+const screenshots = import.meta.glob<ImageMetadata>("/src/assets/projects/*.png", { eager: true, import: "default" });
+const screenshot = screenshots[`/src/assets/projects/${slug(name)}.png`];
 ---
 
 <div class="card bg-base-200 card-frame overflow-hidden group">
@@ -42,8 +42,9 @@ const screenshot = screenshots[`/src/assets/projects/${slug(name)}.jpg`];
                 <Image
                     src={screenshot}
                     alt=""
-                    widths={[480, 960]}
+                    widths={[480, 960, 1280]}
                     sizes="(min-width: 1280px) 30vw, (min-width: 768px) 40vw, 100vw"
+                    quality={90}
                     class="w-full aspect-[16/10] object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
                 />
             </a>

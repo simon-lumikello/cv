@@ -6,7 +6,7 @@ The CV is built using [Astro](https://docs.astro.build). I come from a [React](h
 
 ## Project screenshots
 
-Each pet project card shows a screenshot of the project, kept in `src/assets/projects/<slug>.jpg` (the slug comes from the project name, e.g. `Jaksa! Jaksa!` → `jaksa-jaksa.jpg`). A project without one gets a plain card.
+Each pet project card shows a screenshot of the project, kept in `src/assets/projects/<slug>.png` (the slug comes from the project name, e.g. `Jaksa! Jaksa!` → `jaksa-jaksa.png`). A project without one gets a plain card.
 
 The screenshots are taken by [Playwright](https://playwright.dev) and committed, so the build doesn't need a browser:
 
@@ -24,6 +24,7 @@ Every site is shot the same way (1280×800, dark color scheme, Helsinki time zon
 | `delayMs`     | Wait before the shot, after loading and clicking (1500 ms by default)              |
 | `colorScheme` | `"light"` for a site that should not be shown dark                                 |
 | `time`        | Fake clock, e.g. `"15:00"`, for clocks and timelines                               |
+| `phoneScreens` | Show the page as a mobile app: one phone per screen, each optionally after `taps` (for canvas apps like Flutter web) |
 | `manual`      | The image is maintained by hand; the script skips the project                      |
 
 The options are documented in `src/types/PetProject.ts`, the script is `scripts/screenshots.ts`.
