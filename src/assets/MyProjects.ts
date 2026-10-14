@@ -64,9 +64,24 @@ export const MY_PROJECTS: PetProject[] = [
         technologies: ["Next.js", "Supabase", "Vercel"],
     },
     {
+        name: "loma loma! for Android",
+        href: "https://play.google.com/store/apps/details?id=one.loma.loma",
+        hrefLabel: "Google Play",
+        description: "The loma loma! flight finder Android app",
+        yearStart: 2026,
+        technologies: ["Flutter", "Android"],
+        screenshot: {
+            // the web app is the same Flutter build, so it stands in for the Android app
+            url: "https://loma.one",
+            delayMs: 3000,
+            // the Deals tab in front, the search calendar behind it (taps hit the bottom navigation)
+            phoneScreens: [{ taps: [[206, 797]] }, { taps: [[68, 797]] }],
+        },
+    },
+    {
         name: "loma loma!",
         href: "https://loma.one",
-        description: "Cheap flight finder and route explorer, with an Android app in closed testing",
+        description: "Cheap flight finder and route explorer",
         yearStart: 2025,
         technologies: ["Flutter", "Vercel"],
     },
