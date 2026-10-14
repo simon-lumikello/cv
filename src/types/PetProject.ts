@@ -1,6 +1,8 @@
 export interface PetProject {
     name: string
     href: string
+    // shown for the link instead of the shortened href, e.g. "Google Play" for a store listing
+    hrefLabel?: string
     description: string
     yearStart: number
 

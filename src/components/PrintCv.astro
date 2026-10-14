@@ -110,14 +110,14 @@ const updated = new Date().toLocaleDateString("en-GB", { month: "long", year: "n
         <h2>Pet projects</h2>
         <ul class="grid grid-cols-2 gap-x-6 gap-y-2.5">
             {
-                MY_PROJECTS.map(({ name, href, description, yearStart, yearEnd, technologies }) => (
+                MY_PROJECTS.map(({ name, href, hrefLabel, description, yearStart, yearEnd, technologies }) => (
                     <li class="break-inside-avoid">
                         <h3 class="font-medium">
                             {name}
                             <span class="font-normal muted"> · {formatYears(yearStart, yearEnd)}</span>
                         </h3>
                         <div class="muted">
-                            <a href={href}>{displayUrl(href)}</a>
+                            <a href={href}>{hrefLabel ?? displayUrl(href)}</a>
                             {technologies && ` · ${technologies.join(", ")}`}
                         </div>
                         <p>{description}</p>

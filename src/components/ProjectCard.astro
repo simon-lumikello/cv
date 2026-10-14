@@ -7,7 +7,7 @@ import { slug } from "@/utils/slug";
 
 interface Props extends PetProject {}
 
-const { name, href, description, yearStart, yearEnd, technologies } = Astro.props;
+const { name, href, hrefLabel, description, yearStart, yearEnd, technologies } = Astro.props;
 
 // written by `bun run screenshots`; a project without one renders as a plain card.
 // It goes under the content, after the card body's bottom padding, fading in from the card body and
@@ -23,7 +23,7 @@ const screenshot = screenshots[`/src/assets/projects/${slug(name)}.jpg`];
                 <h3 class="card-title text-xl font-medium">{name}</h3>
                 <time class="text-subtle not-italic font-mono">{formatYears(yearStart, yearEnd)}</time>
             </div>
-            <a class="link link-hover text-sm text-base-content/70" href={href}>{displayUrl(href)}</a>
+            <a class="link link-hover text-sm text-base-content/70" href={href}>{hrefLabel ?? displayUrl(href)}</a>
         </div>
         <p>{description}</p>
         {
