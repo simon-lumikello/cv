@@ -31,7 +31,7 @@ export const MY_PROJECTS: PetProject[] = [
         description: "Google Calendar-based family dashboard",
         yearStart: 2026,
         technologies: ["TypeScript", "React", "Vercel"],
-        screenshot: { clicks: ["Got it", "Minimize radar"], time: "15:00" },
+        screenshot: { steps: ["Got it", "Minimize radar"], time: "15:00" },
     },
     {
         name: "Weather clock",
@@ -46,7 +46,11 @@ export const MY_PROJECTS: PetProject[] = [
         description: "Weather map with pretty cloud visualization and a few hidden tricks",
         yearStart: 2026,
         technologies: ["TypeScript", "Vercel"],
-        screenshot: { clicks: ["Settings", "Sheer", "Noon", "Apply"], delayMs: 6000 },
+        screenshot: {
+            // Vantaa: the first suggestion is the city in Uusimaa
+            steps: ["Settings", { type: "Vantaa", into: "Search location" }, "Vantaa", "Sheer", "Noon", "Apply"],
+            delayMs: 6000,
+        },
     },
     {
         name: "lumikello.net",

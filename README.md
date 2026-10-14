@@ -20,7 +20,7 @@ Every site is shot the same way (1280×800, dark color scheme, Helsinki time zon
 | Option        | Use                                                                                 |
 | ------------- | ----------------------------------------------------------------------------------- |
 | `url`         | Page to shoot instead of `href`; an image URL is shown on a plain page             |
-| `clicks`      | Buttons or options to click first, e.g. `["Got it"]` to close a welcome dialog     |
+| `steps`       | Clicks by text, e.g. `"Got it"` to close a welcome dialog, and `{ type, into }` to type into a field |
 | `delayMs`     | Wait before the shot, after loading and clicking (1500 ms by default)              |
 | `colorScheme` | `"light"` for a site that should not be shown dark                                 |
 | `time`        | Fake clock, e.g. `"15:00"`, for clocks and timelines                               |

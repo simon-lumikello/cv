@@ -6,7 +6,7 @@
 // Each project in src/assets/MyProjects.ts is opened in headless Chromium and saved as
 // src/assets/projects/<slug>.png, where ProjectCard finds it by the project's name. Every site is shot with
 // the same viewport, scale, color scheme, locale and time zone so the screenshots look alike; per-project
-// tweaks (another url, clicks, a fake clock, phone frames, …) are in the project's `screenshot` field, see
+// tweaks (another url, clicks and typing, a fake clock, phone frames, …) are in the project's `screenshot` field, see
 // ProjectScreenshot.
 //
 // The images are committed, so building the site needs neither a browser nor the network.
@@ -15,7 +15,7 @@ import { mkdir } from "node:fs/promises"
 import { fileURLToPath } from "node:url"
 import { type BrowserContext, type BrowserContextOptions, chromium, devices, type Page } from "playwright"
 import { MY_PROJECTS } from "@/assets/MyProjects"
-import type { PetProject } from "@/types/PetProject"
+import type { PetProject, ScreenshotStep } from "@/types/PetProject"
 import { slug } from "@/utils/slug"
 
 const OUT_DIR = new URL("../src/assets/projects/", import.meta.url)
@@ -82,7 +82,7 @@ function withProjectPage<T>(context: BrowserContext, project: PetProject, use: (
             await page.waitForLoadState("networkidle", { timeout: 10_000 }).catch(() => {})
         }
 
-        await clickThrough(page, screenshot.clicks ?? [])
+        await runSteps(page, screenshot.steps ?? [])
         await page.waitForTimeout(screenshot.delayMs ?? DEFAULT_DELAY_MS)
         return use(page)
     })
@@ -97,13 +97,27 @@ async function withPage<T>(context: BrowserContext, use: (page: Page) => Promise
     }
 }
 
-async function clickThrough(page: Page, texts: string[]): Promise<void> {
-    for (const text of texts) {
-        // a button by its accessible name, or anything else (e.g. a radio label) by its exact text
-        const target = page.getByRole("button", { name: text }).or(page.getByText(text, { exact: true })).first()
-        await target.waitFor({ state: "visible", timeout: 10_000 })
-        // force: animated pages (e.g. a live map) never count as "stable" for Playwright
-        await target.click({ force: true })
+async function runSteps(page: Page, steps: ScreenshotStep[]): Promise<void> {
+    for (const step of steps) {
+        if (typeof step === "string") {
+            // a button by its accessible name, or anything else (e.g. a radio label) by its exact text
+            const target = page.getByRole("button", { name: step }).or(page.getByText(step, { exact: true })).first()
+            // generous: e.g. search suggestions wait for a server round trip
+            await target.waitFor({ state: "visible", timeout: 15_000 })
+            // force: animated pages (e.g. a live map) never count as "stable" for Playwright
+            await target.click({ force: true })
+        } else {
+            const field = page.getByLabel(step.into).or(page.getByPlaceholder(step.into)).first()
+            // clear it the way a user would: a controlled input may ignore a programmatic fill(""), and the
+            // typed text would then be appended ("HelsinkiVantaa")
+            await field.click({ force: true })
+            await field.press("ControlOrMeta+A")
+            await field.press("Backspace")
+            // key by key, as search-as-you-type fields listen for key presses rather than value changes
+            await field.pressSequentially(step.type, { delay: 50 })
+            const value = await field.inputValue()
+            if (value !== step.type) throw new Error(`typed "${step.type}" into "${step.into}", but it reads "${value}"`)
+        }
         // let dialogs open and close
         await page.waitForTimeout(300)
     }

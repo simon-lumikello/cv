@@ -21,11 +21,10 @@ export interface ProjectScreenshot {
     // for projects without a web page of their own
     url?: string
 
-    // buttons or options to click in order before the shot, by their accessible name or exact text,
-    // e.g. to close a welcome dialog or to pick settings
-    clicks?: string[]
+    // what to do on the page before the shot, in order, e.g. close a welcome dialog or pick settings
+    steps?: ScreenshotStep[]
 
-    // wait before the shot, after the page has loaded and the clicks are done, for animations, maps and
+    // wait before the shot, after the page has loaded and the steps are done, for animations, maps and
     // data fetching; 1500 ms by default
     delayMs?: number
 
@@ -42,6 +41,11 @@ export interface ProjectScreenshot {
     // the image is maintained by hand, the script leaves it alone
     manual?: boolean
 }
+
+// "Text": click the button with this accessible name, or else the element with exactly this text
+// (e.g. a radio label or a search suggestion); waits for it to appear first.
+// { type, into }: type text into the field with this label or placeholder, replacing what is there.
+export type ScreenshotStep = string | { type: string; into: string }
 
 export interface PhoneScreen {
     // points to tap before taking this screen, in CSS pixels of the 412×839 phone viewport; for apps drawn
